@@ -42,7 +42,7 @@ public class LoginScreen extends Fragment {
                 Log.d("test", "Pushed the login button");
                 MainActivity ma = (MainActivity) getActivity();
                 if (userPin.getText().toString().equals(pin)) {
-                    ma.successfulLogin();
+                    ma.loadMistakeList();
                 }else{
                     ma.failedLogin();
                 }
