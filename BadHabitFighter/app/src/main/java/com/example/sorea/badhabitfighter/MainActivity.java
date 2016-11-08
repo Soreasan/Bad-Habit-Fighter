@@ -6,13 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class MainActivity extends AppCompatActivity {
     //My theory is that I can do state management by having this global fragment.
     private Fragment currentFragment;
-    private ArrayList<HashMap<String, String>> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +27,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    protected void loadMistakeList() {
-        list = new ArrayList<HashMap<String, String>>();
-
-        currentFragment = new MistakeListFrag();
+    protected void successfulLogin() {
+        currentFragment = new MistakeList();
         Log.d("test", "Login");
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.activity_main, currentFragment, "mainLayout")
