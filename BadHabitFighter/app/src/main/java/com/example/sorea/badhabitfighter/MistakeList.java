@@ -30,13 +30,15 @@ public class MistakeList extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        DatabaseHelper dbhelp = new DatabaseHelper(getActivity(), "mistakes", null, 3);
+        DatabaseHelper dbhelp = new DatabaseHelper(getActivity(), "mistakes", null, 1);
         dbhelp.insertMistake("11/11/11", "code", "comments");
         Cursor cursor = dbhelp.getAllMistakes();
-        columns = new String[]{"date", "code", "notes"};
-        int[] views = new int[]{android.R.id.text1, android.R.id.text2};
+        columns = new String[]{"display"};
+        int[] views = new int[]{android.R.id.text1};
 
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getActivity(), android.R.layout.simple_list_item_1, cursor, columns, views, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getActivity(),
+                android.R.layout.simple_list_item_1, cursor, columns, views,
+                CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
         this.setListAdapter(adapter);
 
         return super.onCreateView(inflater, container, savedInstanceState);

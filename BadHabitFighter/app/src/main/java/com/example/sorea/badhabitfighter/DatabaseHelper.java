@@ -20,7 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         //This query creates a table
         String createQuery = "CREATE TABLE mistakes" +
                 "(_id integer primary key autoincrement," +
-                "date TEXT, code TEXT, notes TEXT);";
+                "date TEXT, code TEXT, notes TEXT, display TEXT);";
         db.execSQL(createQuery); //execute this query to create the database.
     }
 
@@ -63,6 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         newMistake.put("date", date);
         newMistake.put("code", code);
         newMistake.put("notes", notes);
+        newMistake.put("display", date + " - " + code);
         if(open()!= null){
             Log.d("test", "INSERT succeeded.");
             rowID = myDatabase.insert("mistakes", null, newMistake);
@@ -79,6 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         newMistake.put("date", date);
         newMistake.put("code", code);
         newMistake.put("notes", notes);
+        newMistake.put("display", date + " - " + code);
         if(open()!= null){
             Log.d("test", "UPDATE succeeded.");
             rowID = myDatabase.update("mistakes", newMistake, "_id=" + _id, null);
