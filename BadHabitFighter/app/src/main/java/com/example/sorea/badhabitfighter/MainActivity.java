@@ -36,7 +36,18 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
         getSupportFragmentManager().executePendingTransactions();
     }
+
     protected void failedLogin(){
         Toast.makeText(getApplicationContext(), "Incorrect pin", Toast.LENGTH_LONG).show();
+    }
+
+    protected void openInsertMistake(){
+        currentFragment = new InsertMistake();
+        Log.d("test", "openInsertMistake");
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.activity_main, currentFragment, "mainLayout")
+                .addToBackStack(null)
+                .commit();
+        getSupportFragmentManager().executePendingTransactions();
     }
 }
