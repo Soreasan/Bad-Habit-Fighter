@@ -7,13 +7,16 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CursorAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 
@@ -70,6 +73,28 @@ public class MistakeList extends ListFragment {
         MainActivity ma = (MainActivity) getActivity();
         ma.openInsertMistake();
         return true;
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id){
+        Log.d("test", "Clicked list item " + id);
+        super.onListItemClick(l, v, position, id);
+        MainActivity ma = (MainActivity) getActivity();
+        ma.populateMistake(id);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        getListView().setOnItemLongClickListener(new ListView.OnItemLongClickListener(){
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
+                Log.d("test", "long press detected");
+                MainActivity ma = (MainActivity) getActivity();
+                ma.populateMistake(id);
+                return false;
+            }
+        });
     }
 
 }

@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    protected void successfulLogin() {
+    protected void openMistakeList() {
         currentFragment = new MistakeList();
         Log.d("test", "Login");
         getSupportFragmentManager().beginTransaction()
@@ -44,6 +44,16 @@ public class MainActivity extends AppCompatActivity {
     protected void openInsertMistake(){
         currentFragment = new InsertMistake();
         Log.d("test", "openInsertMistake");
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.activity_main, currentFragment, "mainLayout")
+                .addToBackStack(null)
+                .commit();
+        getSupportFragmentManager().executePendingTransactions();
+    }
+
+    protected void populateMistake(long id){
+        currentFragment = new EditMistake();
+        Log.d("test", "open EditMistake");
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.activity_main, currentFragment, "mainLayout")
                 .addToBackStack(null)
