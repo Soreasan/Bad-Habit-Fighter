@@ -102,5 +102,13 @@
             android:layout_toEndOf="@+id/editBackButton"
             android:id="@+id/editDeleteButton" />
 
+        <TextView
+            android:text="Id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_alignEnd="@+id/editDeleteButton"
+            android:id="@+id/edtEditId" />
+
     </RelativeLayout>
 </ScrollView>

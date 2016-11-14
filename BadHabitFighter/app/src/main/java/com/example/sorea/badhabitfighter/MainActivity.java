@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
             currentFragment = new LoginScreen();
             Log.d("test", "Creating fragments for the first time");
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.activity_main, currentFragment,"mainLayout")
+                    .add(R.id.activity_main, currentFragment,"ls")
                     .addToBackStack(null)
                     .commit();
             getSupportFragmentManager().executePendingTransactions();
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         currentFragment = new MistakeList();
         Log.d("test", "Login");
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.activity_main, currentFragment, "mainLayout")
+                .replace(R.id.activity_main, currentFragment, "ml")
                 .addToBackStack(null)
                 .commit();
         getSupportFragmentManager().executePendingTransactions();
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         currentFragment = new InsertMistake();
         Log.d("test", "openInsertMistake");
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.activity_main, currentFragment, "mainLayout")
+                .replace(R.id.activity_main, currentFragment, "im")
                 .addToBackStack(null)
                 .commit();
         getSupportFragmentManager().executePendingTransactions();
@@ -55,9 +55,13 @@ public class MainActivity extends AppCompatActivity {
         currentFragment = new EditMistake();
         Log.d("test", "open EditMistake");
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.activity_main, currentFragment, "mainLayout")
+                .replace(R.id.activity_main, currentFragment, "pm")
                 .addToBackStack(null)
                 .commit();
         getSupportFragmentManager().executePendingTransactions();
+        Log.d("test", "Next going to try to create an EditMistake by getting the one from currentFragment");
+        EditMistake editMistake = (EditMistake) getSupportFragmentManager().findFragmentByTag("pm");
+        Log.d("test", "Next we'll update the text on the fragment itself");
+        editMistake.updateText(id);
     }
 }
