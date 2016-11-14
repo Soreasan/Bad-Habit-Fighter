@@ -64,4 +64,11 @@ public class MainActivity extends AppCompatActivity {
         Log.d("test", "Next we'll update the text on the fragment itself");
         editMistake.updateText(id);
     }
+
+    protected void deleteCourse(long id){
+        Log.d("test", "deleteCourse() in main called");
+        DatabaseHelper dbhelper = new DatabaseHelper(MainActivity.this, "mistakes", null, 1);
+        dbhelper.deleteMistake(id);
+        openMistakeList();
+    }
 }

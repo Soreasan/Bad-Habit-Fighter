@@ -74,13 +74,10 @@ public class EditMistake extends Fragment {
         });
 
         delete.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View view) {
-                DatabaseHelper dbhelper = new DatabaseHelper(getActivity(), "mistakes", null, 1);
-                dbhelper.deleteMistake(my_id);
                 MainActivity ma = (MainActivity) getActivity();
-                ma.openMistakeList();
+                ma.deleteCourse(my_id);
             }
         });
 

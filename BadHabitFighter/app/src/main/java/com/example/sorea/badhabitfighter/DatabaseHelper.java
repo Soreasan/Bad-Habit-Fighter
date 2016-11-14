@@ -94,7 +94,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void deleteMistake(long _id){
         if(open() != null) {
             Log.d("test", "DELETE succeeded");
-            myDatabase.delete("courses", "_id=" + _id, null);
+            myDatabase.delete("mistakes", "_id=" + _id, null);
             close();
         }else{
             Log.d("test","delete failed because database was closed");
