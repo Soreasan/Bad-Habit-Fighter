@@ -112,6 +112,17 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return cursor;
     }
 
+    public Cursor getAllMistakesOrderByDateDesc(){
+        Cursor cursor = null;
+        if(open() != null) {
+            Log.d("test", "SELECT ALL succeeded and returned a cursor");
+            cursor = myDatabase.rawQuery("SELECT * FROM mistakes ORDER BY date DESC", null);
+        }else{
+            Log.d("test", "SELECT ALL failed because the database was closed.");
+        }
+        return cursor;
+    }
+
     public Cursor getOneMistake(long _id){
         String[] params = new String[1];
         params[0] = "" + _id;

@@ -40,8 +40,7 @@ public class MistakeList extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         DatabaseHelper dbhelp = new DatabaseHelper(getActivity(), "mistakes", null, 1);
-        dbhelp.insertMistake("11/11/11", "code", "comments");
-        Cursor cursor = dbhelp.getAllMistakes();
+        Cursor cursor = dbhelp.getAllMistakesOrderByDateDesc();
         columns = new String[]{"display"};
         int[] views = new int[]{android.R.id.text1};
 
