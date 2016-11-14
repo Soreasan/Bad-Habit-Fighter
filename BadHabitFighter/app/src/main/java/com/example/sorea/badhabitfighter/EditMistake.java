@@ -28,6 +28,7 @@ public class EditMistake extends Fragment {
     protected Button save;
     protected Button back;
     protected Button delete;
+    protected long my_id;
 
     public EditMistake() {
         // Required empty public constructor
@@ -59,21 +60,35 @@ public class EditMistake extends Fragment {
             @Override
             public void onClick(View view) {
                 DatabaseHelper dbhelper = new DatabaseHelper(getActivity(), "mistakes", null, 1);
-                /*
+
                 long rowID = dbhelper.updateMistake(
+                        my_id,
                         date.getText().toString(),
                         code.getText().toString(),
                         notes.getText().toString()
                 );
-                */
+
                 MainActivity ma = (MainActivity) getActivity();
                 ma.openMistakeList();
             }
         });
+
+        delete.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                DatabaseHelper dbhelper = new DatabaseHelper(getActivity(), "mistakes", null, 1);
+                dbhelper.deleteMistake(my_id);
+                MainActivity ma = (MainActivity) getActivity();
+                ma.openMistakeList();
+            }
+        });
+
         return myView;
     }
 
     protected void updateText(long dbID){
+        my_id = dbID;
         Log.d("test", "updateText has been called.  Creating a databasehelper");
         DatabaseHelper dbhelper = new DatabaseHelper(getActivity(), "mistakes", null, 1);
         Log.d("test", "Creating a cursor");
